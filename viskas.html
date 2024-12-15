@@ -138,8 +138,18 @@
 <body>
     <h1>Welcome to the MR CTF</h1>
     <div id="questions">
-        <!-- Questions go here -->
-        <!-- Easy, Medium, and Hard Questions Sections -->
+        <!-- Easy Questions -->
+        <div class="question">
+            <div class="difficulty">Easy</div>
+            <p>1. What is 2 + 2?</p>
+            <a href="files/MESSAGE1.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q1" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q1', 'q1-result')">
+            <div id="q1-result" class="result-individual"></div>
+        </div>
+
+        <!-- More questions can be added here following the same structure -->
+
     </div>
     <input type="button" value="Submit Answers" onclick="checkAnswers()">
     <div id="result"></div>
@@ -185,8 +195,8 @@
     function checkAnswers() {
         let score = 0;
         for (const [id, answer] of Object.entries(answers)) {
-            const input = document.getElementById(id).value.trim();
-            if (input.toLowerCase() === answer.toLowerCase()) {
+            const input = document.getElementById(id)?.value.trim();
+            if (input && input.toLowerCase() === answer.toLowerCase()) {
                 score++;
             }
         }
@@ -214,4 +224,6 @@
             alert("Please fill out all fields.");
         }
     }
-</script>
+    </script>
+</body>
+</html>
