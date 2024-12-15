@@ -14,9 +14,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Align content to the top for scrolling */
-            height: auto; /* Adjust height for content */
-            overflow-y: scroll; /* Add vertical scrolling */
+            justify-content: flex-start;
+            height: auto;
+            overflow-y: scroll;
         }
 
         h1 {
@@ -97,18 +97,12 @@
             font-size: 1.2em;
         }
 
-        .result-individual {
-            margin-top: 10px;
-            font-size: 1em;
-        }
-
         #registration-form {
             display: none;
             margin-top: 30px;
         }
 
-        #registration-form input[type="text"], 
-        #registration-form input[type="email"] {
+        #registration-form input {
             width: 100%;
             background-color: black;
             border: 1px solid #00ff00;
@@ -134,26 +128,32 @@
             color: black;
         }
 
-        /* Center the Submit Answers button at the bottom */
-        #submit-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
+        #registered-users {
+            margin-top: 30px;
+            width: 80%;
+            text-align: left;
         }
 
-        #submit-button {
-            padding: 15px 30px;
-            font-size: 1.2em;
+        #registered-users h2 {
+            text-align: center;
         }
+
+        #registered-users ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #registered-users li {
+            padding: 5px 0;
+            border-bottom: 1px solid #00ff00;
+        }
+
     </style>
 </head>
 <body>
     <h1>Welcome to the MR CTF</h1>
     <div id="questions">
-        <!-- Easy Questions -->
-        <div class="question">
+         <div class="question">
             <div class="difficulty">Easy</div>
             <p>1. What is 2 + 2?</p>
             <a href="files/MESSAGE1.png" download="msg.png" class="button">Download Challenge</a>
@@ -236,13 +236,12 @@
             <input type="text" id="q10" placeholder="Your answer">
             <input type="button" value="Check" onclick="checkIndividualAnswer('q10', 'q10-result')">
             <div id="q10-result" class="result-individual"></div>
-
     </div>
     <input type="button" value="Submit Answers" onclick="checkAnswers()">
     <div id="result"></div>
 
     <!-- Registration Form -->
-    <div id="registration-form" style="display: none; margin-top: 30px;">
+    <div id="registration-form">
         <h2>Register Your Score</h2>
         <form id="registration">
             <input type="text" id="username" placeholder="Enter your username" required>
@@ -253,64 +252,84 @@
         <div id="registration-result"></div>
     </div>
 
+    <!-- Registered Users List -->
+    <div id="registered-users" style="display: none;">
+        <h2>Registered Users</h2>
+        <ul id="user-list"></ul>
+    </div>
+
     <script>
-    const answers = {
-        q1: "4",
-        q2: "Paris",
-        q3: "blue",
-        q4: "30",
-        q5: "35",
-        q6: "HTML",
-        q7: "101",
-        q8: "Earth",
-        q9: "FF",
-        q10: "echo"
-    };
+        const answers = {
+            q1: "4",
+            q2: "Paris",
+            q3: "blue",
+            q4: "30",
+            q5: "35",
+            q6: "HTML",
+            q7: "101",
+            q8: "Earth",
+            q9: "FF",
+            q10: "echo"
+        };
 
-    function checkIndividualAnswer(inputId, resultId) {
-        const input = document.getElementById(inputId).value.trim();
-        const result = document.getElementById(resultId);
-        if (input.toLowerCase() === answers[inputId].toLowerCase()) {
-            result.textContent = "Correct!";
-            result.style.color = "#00ff00";
-        } else {
-            result.textContent = "Incorrect!";
-            result.style.color = "red";
-        }
-    }
+        const registeredUsers = [];
 
-    function checkAnswers() {
-        let score = 0;
-        for (const [id, answer] of Object.entries(answers)) {
-            const input = document.getElementById(id)?.value.trim();
-            if (input && input.toLowerCase() === answer.toLowerCase()) {
-                score++;
+        function checkIndividualAnswer(inputId, resultId) {
+            const input = document.getElementById(inputId).value.trim();
+            const result = document.getElementById(resultId);
+            if (input.toLowerCase() === answers[inputId].toLowerCase()) {
+                result.textContent = "Correct!";
+                result.style.color = "#00ff00";
+            } else {
+                result.textContent = "Incorrect!";
+                result.style.color = "red";
             }
         }
-        const result = document.getElementById("result");
-        result.textContent = `You scored ${score} out of ${Object.keys(answers).length}.`;
 
-        // Display the registration form
-        if (score > 0) { // Ensure they have at least some score
-            const registrationForm = document.getElementById("registration-form");
-            registrationForm.style.display = "block";
-            document.getElementById("final-score").value = score; // Pass the score to the form
+        function checkAnswers() {
+            let score = 0;
+            for (const [id, answer] of Object.entries(answers)) {
+                const input = document.getElementById(id)?.value.trim();
+                if (input && input.toLowerCase() === answer.toLowerCase()) {
+                    score++;
+                }
+            }
+            const result = document.getElementById("result");
+            result.textContent = `You scored ${score} out of ${Object.keys(answers).length}.`;
+
+            if (score > 0) {
+                const registrationForm = document.getElementById("registration-form");
+                registrationForm.style.display = "block";
+                document.getElementById("final-score").value = score;
+            }
         }
-    }
 
-    function registerUser() {
-        const username = document.getElementById("username").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const score = document.getElementById("final-score").value;
+        function registerUser() {
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const score = document.getElementById("final-score").value;
 
-        if (username && email) {
-            const registrationResult = document.getElementById("registration-result");
-            registrationResult.textContent = `Thank you, ${username}! Your score of ${score} has been registered.`;
-            registrationResult.style.color = "#00ff00";
-        } else {
-            alert("Please fill out all fields.");
+            if (username && email) {
+                registeredUsers.push({ username, email, score });
+                updateUserList();
+                document.getElementById("registration-result").textContent = `Thank you, ${username}! Your score of ${score} has been registered.`;
+                document.getElementById("registration-result").style.color = "#00ff00";
+                document.getElementById("registration-form").reset();
+            } else {
+                alert("Please fill out all fields.");
+            }
         }
-    }
+
+        function updateUserList() {
+            const userList = document.getElementById("user-list");
+            userList.innerHTML = "";
+            registeredUsers.forEach(user => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${user.username} (Score: ${user.score})`;
+                userList.appendChild(listItem);
+            });
+            document.getElementById("registered-users").style.display = "block";
+        }
     </script>
 </body>
 </html>
