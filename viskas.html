@@ -103,180 +103,135 @@
         }
     </style>
 </head>
-  <body>
+<body>
     <h1>Welcome to the MR CTF</h1>
- 
-      <div id="auth-section">
-      <button id="sign-in-btn">Sign In with Gmail</button>
-      
-      <p id="user-info" style="display: none">
-        Logged in as: <span id="user-email"></span>
-          <button id="sign-out-btn" style="display: none">Sign Out</button>
-      </p>
+    <div id="questions">
+        <!-- Easy Questions -->
+        <div class="question">
+            <div class="difficulty">Easy</div>
+            <p>1. What is 2 + 2?</p>
+            <a href="files/MESSAGE1.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q1" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q1', 'q1-result')">
+            <div id="q1-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Easy</div>
+            <p>2. What is the capital of France?</p>
+            <a href="files/MESSAGE2.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q2" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q2', 'q2-result')">
+            <div id="q2-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Easy</div>
+            <p>3. What is the color of the sky on a clear day?</p>
+            <a href="files/MESSAGE3.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q3" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q3', 'q3-result')">
+            <div id="q3-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Easy</div>
+            <p>4. What is 5 * 6?</p>
+            <a href="files/MESSAGE4.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q4" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q4', 'q4-result')">
+            <div id="q4-result" class="result-individual"></div>
+        </div>
+
+        <!-- Medium Questions -->
+        <div class="question">
+            <div class="difficulty">Medium</div>
+            <p>5. What is the result of 12 + 23?</p>
+            <a href="files/MESSAGE5.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q5" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q5', 'q5-result')">
+            <div id="q5-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Medium</div>
+            <p>6. What programming language is this website written in?</p>
+            <a href="files/MESSAGE6.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q6" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q6', 'q6-result')">
+            <div id="q6-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Medium</div>
+            <p>7. What is the binary representation of 5?</p>
+            <a href="files/MESSAGE7.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q7" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q7', 'q7-result')">
+            <div id="q7-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Medium</div>
+            <p>8. What is the third planet from the Sun?</p>
+            <a href="files/MESSAGE8.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q8" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q8', 'q8-result')">
+            <div id="q8-result" class="result-individual"></div>
+        </div>
+
+        <!-- Hard Questions -->
+        <div class="question">
+            <div class="difficulty">Hard</div>
+            <p>9. What is the hexadecimal value of 255?</p>
+            <a href="files/MESSAGE9.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q9" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q9', 'q9-result')">
+            <div id="q9-result" class="result-individual"></div>
+        </div>
+        <div class="question">
+            <div class="difficulty">Hard</div>
+            <p>10. Solve this riddle: I speak without a mouth and hear without ears. What am I?</p>
+            <a href="files/MESSAGE10.png" download="msg.png" class="button">Download Challenge</a>
+            <input type="text" id="q10" placeholder="Your answer">
+            <input type="button" value="Check" onclick="checkIndividualAnswer('q10', 'q10-result')">
+            <div id="q10-result" class="result-individual"></div>
+        </div>
     </div>
-
-    <div id="questions" style="display: none">
-      <!-- Easy Questions -->
-      <div class="question">
-        <div class="difficulty">Easy</div>
-        <p>1. What is 2 + 2?</p>
-        <a href="files/MESSAGE1.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q1" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q1', 'q1-result')"
-        />
-        <div id="q1-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Easy</div>
-        <p>2. What is the capital of France?</p>
-        <a href="files/MESSAGE2.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q2" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q2', 'q2-result')"
-        />
-        <div id="q2-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Easy</div>
-        <p>3. What is the color of the sky on a clear day?</p>
-        <a href="files/MESSAGE3.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q3" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q3', 'q3-result')"
-        />
-        <div id="q3-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Easy</div>
-        <p>4. What is 5 * 6?</p>
-        <a href="files/MESSAGE4.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q4" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q4', 'q4-result')"
-        />
-        <div id="q4-result" class="result-individual"></div>
-      </div>
-
-      <!-- Medium Questions -->
-      <div class="question">
-        <div class="difficulty">Medium</div>
-        <p>5. What is the result of 12 + 23?</p>
-        <a href="files/MESSAGE5.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q5" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q5', 'q5-result')"
-        />
-        <div id="q5-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Medium</div>
-        <p>6. What programming language is this website written in?</p>
-        <a href="files/MESSAGE6.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q6" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q6', 'q6-result')"
-        />
-        <div id="q6-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Medium</div>
-        <p>7. What is the binary representation of 5?</p>
-        <a href="files/MESSAGE7.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q7" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q7', 'q7-result')"
-        />
-        <div id="q7-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Medium</div>
-        <p>8. What is the third planet from the Sun?</p>
-        <a href="files/MESSAGE8.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q8" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q8', 'q8-result')"
-        />
-        <div id="q8-result" class="result-individual"></div>
-      </div>
-
-      <!-- Hard Questions -->
-      <div class="question">
-        <div class="difficulty">Hard</div>
-        <p>9. What is the hexadecimal value of 255?</p>
-        <a href="files/MESSAGE9.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q9" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q9', 'q9-result')"
-        />
-        <div id="q9-result" class="result-individual"></div>
-      </div>
-      <div class="question">
-        <div class="difficulty">Hard</div>
-        <p>
-          10. Solve this riddle: I speak without a mouth and hear without ears.
-          What am I?
-        </p>
-        <a href="files/MESSAGE10.png" download="msg.png" class="button"
-          >Download Challenge</a
-        >
-        <input type="text" id="q10" placeholder="Your answer" />
-        <input
-          type="button"
-          value="Check"
-          onclick="checkIndividualAnswer('q10', 'q10-result')"
-        />
-        <div id="q10-result" class="result-individual"></div>
-      </div>
-    </div>
-    <input
-      type="button"
-      value="Submit Answers"
-      onclick="checkAnswers()"
-      id="submit-answers-btn"
-      style="display: none"
-    />
+    <input type="button" value="Submit Answers" onclick="checkAnswers()">
     <div id="result"></div>
-    <div id="leaderboard-section" style="display: none">
-      <h2>Leaderboard</h2>
-      <ul id="leaderboard"></ul>
-    </div>
-   <script src=".script.js" type="module"></script>
-  </body>
+
+    <script>
+        const answers = {
+            q1: "4",
+            q2: "Paris",
+            q3: "blue",
+            q4: "30",
+            q5: "35",
+            q6: "HTML",
+            q7: "101",
+            q8: "Earth",
+            q9: "FF",
+            q10: "echo"
+        };
+
+        function checkIndividualAnswer(inputId, resultId) {
+            const input = document.getElementById(inputId).value.trim();
+            const result = document.getElementById(resultId);
+            if (input.toLowerCase() === answers[inputId].toLowerCase()) {
+                result.textContent = "Correct!";
+                result.style.color = "#00ff00";
+            } else {
+                result.textContent = "Incorrect!";
+                result.style.color = "red";
+            }
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            for (const [id, answer] of Object.entries(answers)) {
+                const input = document.getElementById(id).value.trim();
+                if (input.toLowerCase() === answer.toLowerCase()) {
+                    score++;
+                }
+            }
+            const result = document.getElementById("result");
+            result.textContent = `You scored ${score} out of ${Object.keys(answers).length}.`;
+        }
+    </script>
+</body>
 </html>
